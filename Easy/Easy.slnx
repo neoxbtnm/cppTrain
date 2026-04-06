@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Project2/">
+    <File Path="Project2.cpp" />
+  </Folder>
+  <Project Path="Project1/Project1.vcxproj" Id="47523c0e-15fb-4c28-882b-99f110402e29" />
+</Solution>
