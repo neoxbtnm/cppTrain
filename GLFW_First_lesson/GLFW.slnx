@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="GLFW.vcxproj" Id="e9a4d475-7d27-4eb1-a67d-bb941db8181a" />
+</Solution>
