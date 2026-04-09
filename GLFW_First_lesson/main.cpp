@@ -1,6 +1,7 @@
 #include <iostream>
 #include <GL/glew.h> // GLEW перед GLFW обязательно
 #include <GLFW/glfw3.h>
+#include <string>
 
 
 int main() {
@@ -14,9 +15,10 @@ int main() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
-	// Создание GLFW окна
+	const char* aTitlebar = "FirstLesson FPS: ";
 
-	GLFWwindow* window = glfwCreateWindow(800, 600, "FirstLesson", nullptr, nullptr);
+	// Создание GLFW окна
+	GLFWwindow* window = glfwCreateWindow(800, 600, aTitlebar, 0, nullptr);
 	if (window == nullptr) {
 		std::cout << "Failed to open GLFW window" << std::endl;
 		glfwTerminate();
@@ -36,13 +38,27 @@ int main() {
 	glfwGetFramebufferSize(window, &width, &height);
 	glViewport(0, 0, width, height);
 
+	// Переменные для сохранения времени кадра
+	double deltaTime = 0.0f;
+	double lastFrame = 0.0f;
+
 	while (!glfwWindowShouldClose(window)) {
 		glfwPollEvents();
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		
+
 		glfwSwapBuffers(window);
+
+		// Счетчик кадров
+		double currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+		int fps = 1 / deltaTime;
+
+		std::string aTitlebar_new = aTitlebar + std::to_string(fps);
+
+		glfwSetWindowTitle(window, aTitlebar_new.c_str() );
 	}
 
 	glfwTerminate();
